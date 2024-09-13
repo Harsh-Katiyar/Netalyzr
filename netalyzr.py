@@ -1,8 +1,12 @@
-from modules import search_engine, google_hacking, social_networking
+# Main Netalyzr file
+
+from modules import search_engine, social_networking
 from modules import websites, email, competitive_intelligence
 from modules import whois_lookup, dns_lookup, network, social_engineering, automated_tool
+from modules import google_hacking  # Import the Google hacking module
 
 def display_menu():
+    """Display the main menu for the Netalyzr tool."""
     print("Welcome to Netalyzr!")
     print("Select a module to explore:")
     print("1) Search Engines")
@@ -19,12 +23,13 @@ def display_menu():
     print("0) Exit")
 
 def handle_choice(choice):
+    """Handle the user's choice by running the appropriate module."""
     if choice == '1':
         print("Launching Search Engines module...")
         search_engine.search_engines_module()
     elif choice == '2':
         print("Launching Advanced Google Hacking Techniques module...")
-        google_hacking.google_hacking_module()
+        google_hacking.main()  # Call the main function from google_hacking module
     elif choice == '3':
         print("Launching Social Networking Sites module...")
         social_networking.social_networking_module()
@@ -59,6 +64,7 @@ def handle_choice(choice):
         print("Invalid choice. Please select a number between 0 and 11.")
 
 def main():
+    """Main function to display the menu and handle user inputs."""
     while True:
         display_menu()
         choice = input("Enter your choice: ")
