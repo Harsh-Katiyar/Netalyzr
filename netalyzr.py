@@ -1,5 +1,3 @@
-# Importing each module from the modules folder
-
 from modules import search_engine, google_hacking, social_networking
 from modules import websites, email, competitive_intelligence
 from modules import whois_lookup, dns_lookup, network, social_engineering, automated_tool
@@ -24,38 +22,36 @@ def handle_choice(choice):
     if choice == '1':
         print("Launching Search Engines module...")
         search_engine.search_engines_module()
-        # Add functionality here
     elif choice == '2':
         print("Launching Advanced Google Hacking Techniques module...")
-        # Add functionality here
+        google_hacking.google_hacking_module()
     elif choice == '3':
         print("Launching Social Networking Sites module...")
-        # Add functionality here
+        social_networking.social_networking_module()
     elif choice == '4':
         print("Launching Websites module...")
-        # Add functionality here
+        websites.websites_module()
     elif choice == '5':
         print("Launching Email module...")
-        # Add functionality here
+        email.email_module()
     elif choice == '6':
         print("Launching Competitive Intelligence module...")
-        # Add functionality here
+        competitive_intelligence.competitive_intelligence_module()
     elif choice == '7':
         print("Launching WHOIS module...")
-        whois_lookup.whois_lookup()
-        # Add functionality here
+        whois_lookup.whois_lookup()  # Call the WHOIS module function
     elif choice == '8':
         print("Launching DNS module...")
-        # Add functionality here
+        dns_lookup.dns_lookup_module()
     elif choice == '9':
         print("Launching Network module...")
-        # Add functionality here
+        network.network_module()
     elif choice == '10':
         print("Launching Social Engineering module...")
-        # Add functionality here
+        social_engineering.social_engineering_module()
     elif choice == '11':
         print("Launching Automated In-Build Tool...")
-        # Add functionality here
+        automated_tool.automated_tool_module()
     elif choice == '0':
         print("Exiting...")
         exit()
