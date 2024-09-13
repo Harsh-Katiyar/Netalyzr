@@ -9,18 +9,8 @@ import webbrowser
 # DNS Footprinting Function
 def dns_footprinting_menu():
     print("\nDNS Footprinting Options:")
-    print("1. Perform DNS Query (A, MX, TXT, NS, CNAME, SDA, SRV, PTR, RP, HINFO, etc.)")
-    print("   Example: Retrieve different types of DNS records for a domain.")
-    print("   - A: IP address of the domain")
-    print("   - MX: Mail exchange servers")
-    print("   - TXT: Text records")
-    print("   - NS: Nameservers")
-    print("   - CNAME: Canonical names")
-    print("   - SDA: Service Discovery Agent records")
-    print("   - SRV: Service location records")
-    print("   - PTR: Pointer records for reverse DNS lookups")
-    print("   - RP: Responsible person records")
-    print("   - HINFO: Host information records")
+    print("1. Perform DNS Query (A, MX, TXT, NS, CNAME, etc.)")
+    print("   Example: Retrieve the IP address (A record) or mail server (MX record) for a domain.")
     print("2. Reverse DNS Lookup")
     print("   Example: Find the domain name associated with a given IP address.")
     print("3. DNS Zone Transfer")
@@ -31,8 +21,8 @@ def dns_footprinting_menu():
     print("   Example: Discover subdomains (e.g., blog.example.com, mail.example.com) of a given domain.")
     print("6. DNS History Lookup")
     print("   Example: View historical DNS records for a domain, including previous IP addresses and nameservers.")
-    print("7. Get Extra Details")
-    print("   Example: View additional details and tools for network analysis.")
+    print("7. Get Extra Details from Online Tools")
+    print("   Example: Use external tools for additional DNS-related details.")
     print("0. Exit")
 
     choice = input("\nSelect an option: ")
@@ -50,7 +40,7 @@ def dns_footprinting_menu():
     elif choice == "6":
         dns_history_lookup()
     elif choice == "7":
-        get_extra_details()
+        extra_details_links()
     elif choice == "0":
         print("Exiting DNS Footprinting...")
     else:
@@ -58,10 +48,10 @@ def dns_footprinting_menu():
         dns_footprinting_menu()
 
 
-# Function to perform DNS query (A, MX, TXT, NS, CNAME, SDA, SRV, PTR, RP, HINFO records)
+# Function to perform DNS query (A, MX, TXT, NS, CNAME, etc.)
 def perform_dns_query():
     domain = input("\nEnter the domain name: ")
-    record_type = input("Enter the DNS record type (A, MX, TXT, NS, CNAME, SDA, SRV, PTR, RP, HINFO): ").upper()
+    record_type = input("Enter the DNS record type (A, MX, TXT, NS, CNAME, SRV, PTR, RP, HINFO): ").upper()
 
     try:
         answers = dns.resolver.resolve(domain, record_type)
@@ -127,21 +117,14 @@ def subdomain_enumeration():
 
     try:
         print("\nExecuting the subdomain enumeration command. This may take some time...")
-        process = subprocess.Popen(sublist3r_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        result = subprocess.check_output(sublist3r_command, shell=True).decode('utf-8')
 
-        while process.poll() is None:
-            output = process.stdout.readline().decode('utf-8')
-            if output:
-                print(output.strip())
-            time.sleep(1)
-
-        result, _ = process.communicate()
         end_time = time.time()
         elapsed_time = end_time - start_time
         print(f"\nTime taken for subdomain enumeration: {elapsed_time:.2f} seconds")
 
         if result:
-            print(f"\nSubdomains found for {domain}:\n{result.decode('utf-8')}")
+            print(f"\nSubdomains found for {domain}:\n{result}")
         else:
             print(f"\nNo subdomains found for {domain}.")
 
@@ -166,15 +149,35 @@ def dns_history_lookup():
         print(f"Error fetching DNS history: {e}")
 
 
-# Function to get extra details from a link
-def get_extra_details():
-    link = "https://mxtoolbox.com/NetworkTools.aspx"
-    print(f"\nTo get additional details and tools for network analysis, visit the following link: {link}")
-    open_in_browser = input("Do you want to open this link in your browser? (yes/no): ")
-    if open_in_browser.lower() == 'yes':
-        webbrowser.open(link)
+# Function to get extra details from online tools
+def extra_details_links():
+    print("\nUseful DNS Tools:")
+    print("1. DNS Watch: https://www.dnswatch.info/")
+    print("2. DNS Queries: https://www.dnsqueries.com/en/")
+    print("3. MXToolbox Network Tools: https://mxtoolbox.com/NetworkTools.aspx")
+
+    choice = input("\nDo you want to open any of these links in your browser? (1/2/3/no): ")
+
+    if choice == "1":
+        url = "https://www.dnswatch.info/"
+    elif choice == "2":
+        url = "https://www.dnsqueries.com/en/"
+    elif choice == "3":
+        url = "https://mxtoolbox.com/NetworkTools.aspx"
+    elif choice.lower() == "no":
+        print("No links will be opened.")
+        return
     else:
-        print("Link not opened. Returning to the main menu.")
+        print("Invalid choice.")
+        return
+
+    try:
+        print(f"Open this link to use the tool: {url}")
+        open_in_browser = input("Do you want to open this link in your browser? (yes/no): ")
+        if open_in_browser.lower() == 'yes':
+            webbrowser.open(url)
+    except Exception as e:
+        print(f"Error opening the link: {e}")
 
 
 # Call the DNS footprinting menu

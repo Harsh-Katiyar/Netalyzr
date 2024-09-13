@@ -49,7 +49,7 @@ def handle_choice(choice):
         dns_lookup.dns_footprinting_menu()  # Run the DNS module from dns_lookup
     elif choice == '9':
         print("Launching Network module...")
-        network.network_module()
+        network.network_menu()
     elif choice == '10':
         print("Launching Social Engineering module...")
         social_engineering.social_engineering_module()
