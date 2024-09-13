@@ -1,5 +1,4 @@
-# Main Netalyzr file
-
+# Import necessary modules from the 'modules' directory
 from modules import search_engine, social_networking
 from modules import websites, email, competitive_intelligence
 from modules import whois_lookup, dns_lookup, network, social_engineering, automated_tool
@@ -7,7 +6,7 @@ from modules import google_hacking  # Import the Google hacking module
 
 def display_menu():
     """Display the main menu for the Netalyzr tool."""
-    print("Welcome to Netalyzr!")
+    print("\nWelcome to Netalyzr!")
     print("Select a module to explore:")
     print("1) Search Engines")
     print("2) Advanced Google Hacking Techniques")
@@ -16,7 +15,7 @@ def display_menu():
     print("5) Email")
     print("6) Competitive Intelligence")
     print("7) WHOIS")
-    print("8) DNS")
+    print("8) DNS Footprinting")  # Updated text for option 8
     print("9) Network")
     print("10) Social Engineering")
     print("11) Automated In-Build Tool")
@@ -46,8 +45,8 @@ def handle_choice(choice):
         print("Launching WHOIS module...")
         whois_lookup.whois_lookup()  # Call the WHOIS module function
     elif choice == '8':
-        print("Launching DNS module...")
-        dns_lookup.dns_lookup_module()
+        print("Launching DNS Footprinting module...")  # Trigger DNS footprinting
+        dns_lookup.dns_footprinting_menu()  # Run the DNS module from dns_lookup
     elif choice == '9':
         print("Launching Network module...")
         network.network_module()
