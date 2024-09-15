@@ -52,7 +52,7 @@ def handle_choice(choice):
         network.network_menu()
     elif choice == '10':
         print("Launching Social Engineering module...")
-        social_engineering.social_engineering_module()
+        social_engineering.main()
     elif choice == '11':
         print("Launching Automated In-Build Tool...")
         automated_tool.automated_tool_module()
