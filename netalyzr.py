@@ -1,5 +1,5 @@
 # Import necessary modules from the 'modules' directory
-from modules import search_engine, social_networking
+from modules import search_engine
 from modules import websites, email, competitive_intelligence
 from modules import whois_lookup, dns_lookup, network, social_engineering, automated_tool
 from modules import google_hacking  # Import the Google hacking module
@@ -37,7 +37,7 @@ def handle_choice(choice):
         websites.main()
     elif choice == '5':
         print("Launching Email module...")
-        email.email_module()
+        email.email_footprinting_tool()
     elif choice == '6':
         print("Launching Competitive Intelligence module...")
         competitive_intelligence.competitive_intelligence_module()
