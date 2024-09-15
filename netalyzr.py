@@ -1,7 +1,7 @@
 # Import necessary modules from the 'modules' directory
 from modules import search_engine
 from modules import websites, email, competitive_intelligence
-from modules import whois_lookup, dns_lookup, network, social_engineering, automated_tool
+from modules import whois_lookup, dns_lookup, network, social_engineering
 from modules import google_hacking  # Import the Google hacking module
 
 def display_menu():
